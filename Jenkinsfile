@@ -32,7 +32,7 @@ node {
        stage('Deploy'){
          echo 'ssh to web server and tell it to pull new image'
 	  sh 'docker stop $(docker ps -aq)'
-         sh 'docker run --name=nodejs -d -p 8081:8080 puneetsingla/nodejsapp:$version${BUILD_NUMBER}'
+         sh 'docker run --name=nodejs -d -p 8081:8080 puneetsingla/nodejsapp:$version_${BUILD_NUMBER}'
        }
 	//clean unnecessary files
        stage('Cleanup'){
