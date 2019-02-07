@@ -1,6 +1,6 @@
+FROM node:8
 ARG version
 ARG lastcommitsha
-FROM node:8
 ENV version=${version}
 ENV lastcommitsha=${lastcommitsha}
 # Create app directory
