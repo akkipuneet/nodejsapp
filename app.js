@@ -2,7 +2,6 @@ var express = require('express');
 var app = express();
 var version=process.env.version
 var lastcommitsha=process.env.lastcommitsha
-
 if(version==null)
 	{
 		version="not set"
