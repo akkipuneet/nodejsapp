@@ -22,7 +22,7 @@ node {
        }
 
        stage('Build Docker'){
-            sh 'lastcommitsha=$(git rev-parse --verify HEAD) && docker build --build-arg version=$version --build-arg lastcommitsha=$lastcommitsha -t puneetsingla/nodejsapp:$version .'
+            sh 'lastcommitsha=$(git rev-parse --verify HEAD) && docker build --build-arg version=$version$${BUILD_NUMBER} --build-arg lastcommitsha=$lastcommitsha -t puneetsingla/nodejsapp:$version .'
        }
        
       stage('Push Image'){
@@ -31,7 +31,7 @@ node {
 		 {
 		 sh 'docker login -u $docker_username  -p $docker_password'
 		 }
-         sh 'docker push puneetsingla/nodejsapp:$version'
+         sh 'docker push puneetsingla/nodejsapp:$version$${BUILD_NUMBER}'
           
       }
       
@@ -39,7 +39,7 @@ node {
 
          echo 'ssh to web server and tell it to pull new image'
 	     sh 'docker rm -f nodejs 2> nul'
-         sh 'docker run --name=nodejs -d -p 8081:8080 puneetsingla/nodejsapp:$version'
+         sh 'docker run --name=nodejs -d -p 8081:8080 puneetsingla/nodejsapp:$version${BUILD_NUMBER}'
 
        }
 
