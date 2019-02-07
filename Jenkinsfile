@@ -1,6 +1,4 @@
 node {
-
-
     currentBuild.result = "SUCCESS"
 
     try {
