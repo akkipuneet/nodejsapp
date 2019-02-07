@@ -1,5 +1,4 @@
-node {
-	
+node {	
     currentBuild.result = "SUCCESS"
     try {
 	//Git Checkout step  
