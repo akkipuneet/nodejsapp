@@ -16,7 +16,7 @@ node {
        }
 	//build docker image and set latest commit number in lastcommitsha ,  set application version parameter from jenkins followed by buildnumber
        stage('Build Docker'){
-            sh 'lastcommitsha=$(git rev-parse --verify HEAD) && docker build --build-arg version=$version_${BUILD_NUMBER} --build-arg lastcommitsha=$lastcommitsha -t puneetsingla/nodejsapp:$version_${BUILD_NUMBER} .'
+	       sh 'lastcommitsha=$(git rev-parse --verify HEAD) && docker build --build-arg version=${version}_${BUILD_NUMBER} --build-arg lastcommitsha=$lastcommitsha -t puneetsingla/nodejsapp:${version}_${BUILD_NUMBER} .'
        }
        //push the image into dockerhub
       stage('Push Image'){
@@ -32,7 +32,7 @@ node {
        stage('Deploy'){
          echo 'ssh to web server and tell it to pull new image'
 	  sh 'docker rm -f $(docker ps -aq)'
-         sh 'docker run --name=nodejs -d -p 8081:8080 puneetsingla/nodejsapp:$version_${BUILD_NUMBER}'
+	       sh 'docker run --name=nodejs -d -p 8081:8080 puneetsingla/nodejsapp:${version}_${BUILD_NUMBER}'
        }
 	//clean unnecessary files
        stage('Cleanup'){
