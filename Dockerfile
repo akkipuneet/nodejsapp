@@ -1,4 +1,8 @@
+ARG version
+ARG lastcommitsha
 FROM node:8
+ENV version
+ENV lastcommitsha
 # Create app directory
 WORKDIR /usr/src/app
 # Install app dependencies
