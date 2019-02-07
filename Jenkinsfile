@@ -1,6 +1,5 @@
 node {	
-	
-    currentBuild.result = "SUCCESS"
+currentBuild.result = "SUCCESS"
     try {
 	//Git Checkout step  
        stage('Checkout'){
