@@ -26,7 +26,7 @@ node {
 		 {
 		 sh 'docker login -u $docker_username  -p $docker_password'
 		 }
-         sh 'docker push puneetsingla/nodejsapp:$version_${BUILD_NUMBER}'    
+	      sh 'docker push puneetsingla/nodejsapp:${version}_${BUILD_NUMBER}'    
       }
 	//Deploy the Docker image locally and publish on 8081 host port.
        stage('Deploy'){
