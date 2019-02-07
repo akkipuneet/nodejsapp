@@ -1,8 +1,8 @@
 ARG version
 ARG lastcommitsha
 FROM node:8
-ENV version=$version
-ENV lastcommitsha=$lastcommitsha
+ENV version=${version}
+ENV lastcommitsha=${lastcommitsha}
 # Create app directory
 WORKDIR /usr/src/app
 # Install app dependencies
