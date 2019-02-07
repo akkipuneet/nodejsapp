@@ -31,7 +31,7 @@ node {
 	//Deploy the Docker image locally and publish on 8081 host port.
        stage('Deploy'){
          echo 'ssh to web server and tell it to pull new image'
-	     sh 'docker rm -f nodejs2> /dev/null'
+	     sh 'docker rm -f nodejs 2> /dev/null'
          sh 'docker run --name=nodejs -d -p 8081:8080 puneetsingla/nodejsapp:$version${BUILD_NUMBER}'
        }
 	//clean unnecessary files
